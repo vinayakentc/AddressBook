@@ -1,14 +1,16 @@
 package com.addressbook;
 
-import java.util.*;
-
 import com.addressbook.Contacts;
 import com.addressbook.ValidateContact;
+
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class AddressBookList {
 	Scanner in = new Scanner(System.in);
 	Map<String, AddressBook> addressBookMap = new TreeMap<>();
-    ArrayList<AddressBook> addressList = new ArrayList<>();
+	ArrayList<AddressBook> addressList = new ArrayList<>();
+
 	public AddressBookList() {
 		addressBookMap = new TreeMap<>();
 	}
@@ -65,15 +67,20 @@ public class AddressBookList {
 		else
 			addressBookMap.put(bookName, addressBook);
 	}
-	public void showDetails() {
-		if(addressBookMap.size() == 0)
-			System.out.println("No Address Book is present");
+
+	public void showAllDetails() {
+		if (addressBookMap.size() == 0)
+			System.out.println("No AddressBooks are Present");
 		else {
-			for (int i = 0; i < addressList.size(); i++) {
-				AddressBook addressBook = addressList.get(i);
-				addressBook.showDetail();
+			Set set = addressBookMap.entrySet();
+			Iterator iterator = set.iterator();
+			while (iterator.hasNext()) {
+				Map.Entry entry = (Map.Entry) iterator.next();
+				System.out.println("---------------");
+				System.out.println("Address Book : " + entry.getKey());
+				AddressBook addressBook = (AddressBook) entry.getValue();
+				((AddressBook) entry.getValue()).showDetail();
+			}
 		}
 	}
-
-}
 }
