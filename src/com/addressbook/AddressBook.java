@@ -1,23 +1,19 @@
 package com.addressbook;
 
 import java.util.*;
-import com.addressbook.Contacts;
+import com.cg.abg.Contacts;
 
 public class AddressBook {
 
-	Scanner in = new Scanner(System.in);
-	private ArrayList<Contacts> contactList = new ArrayList<>();
+Scanner in = new Scanner(System.in);
+	
 	Map<String, Contacts> contactMap = new HashMap<>();
 	static Map<String, AddressBook> addressBookList = new HashMap<>();
 	
 	public AddressBook() {
-		contactList = new ArrayList<>();
 		contactMap = new HashMap<>();
 	}
-	public List<Contacts> getContactList() {
-		return contactList;
-	}
-
+	
 	public Map<String, Contacts> getContactMap() {
 		return contactMap;
 	}
@@ -68,7 +64,6 @@ public class AddressBook {
 		if (keyPresent) {
 			System.out.println("This name is already present\n");
 		}else {
-			contactList.add(person);
 		contactMap.put(name, person);
 		}
 	}
@@ -128,16 +123,6 @@ public class AddressBook {
 	
 		
 	}
-
-	public void showDetails() {
-		if (contactList.size() == 0)
-			System.out.println("No contacts to show");
-			for (int i = 0; i < contactList.size(); i++) {
-				Contacts person = contactList.get(i);
-				System.out.println("\nContact :" + (i + 1));
-				System.out.println(person);
-			}
-	}
 	
 	public void showDetail() {
 		if(contactMap.size() == 0)
@@ -159,8 +144,6 @@ public class AddressBook {
 		String name = firstName+" "+lastName;
 		Boolean keyPresent = contactMap.containsKey(name);
 		if (keyPresent) {
-			Contacts c = contactMap.get(name);
-			contactList.remove(c);
 			contactMap.remove(name);
 		} else {
 			System.out.println("This name is not present in address book.");
