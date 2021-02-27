@@ -4,12 +4,10 @@ import java.util.Scanner;
 
 public class AddressBookMain {
 
+	public static void main(String[] args) {
 
 
-public static void main(String[] args) {
-		
 		AddressBookList addressBookList = new AddressBookList();
-
 		Scanner in = new Scanner(System.in);
 		boolean b = false;
 		System.out.println("Welcome to Addressbook");
